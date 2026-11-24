@@ -1,0 +1,122 @@
+:root {
+  --bg: oklch(0.22 0.06 255);
+  --fg: oklch(0.97 0.01 90);
+  --card: oklch(0.99 0.01 90);
+  --card-fg: oklch(0.2 0.04 255);
+  --secondary: oklch(0.32 0.07 255);
+  --secondary-fg: oklch(0.97 0.01 90);
+  --muted: oklch(0.3 0.05 255);
+  --muted-fg: oklch(0.8 0.03 255);
+  --accent: oklch(0.84 0.16 85);
+  --accent-fg: oklch(0.2 0.04 60);
+  --destructive: oklch(0.6 0.22 27);
+  --success: oklch(0.65 0.17 150);
+  --border: oklch(0.4 0.06 255);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 16px 40px;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 6vw, 2.6rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+h1 span { color: var(--accent); }
+
+.score { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; font-weight: 700; }
+.chip { border-radius: 12px; padding: 6px 12px; font-size: 0.95rem; }
+.chip.ok { background: var(--success); color: #fff; }
+.chip.bad { background: var(--destructive); color: #fff; }
+.chip.time { background: var(--secondary); color: var(--secondary-fg); }
+.chip.left { background: var(--muted); color: var(--muted-fg); }
+
+.panel {
+  width: min(560px, 94vw);
+  min-height: 440px;
+  border: 2px solid var(--border);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.hidden { display: none; }
+
+.start { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; margin-top: 20px; }
+.lead { font-size: 1.1rem; font-weight: 600; max-width: 26rem; margin: 0; }
+.sub { font-size: 0.9rem; color: var(--muted-fg); max-width: 26rem; margin: 0; }
+
+.q { font-size: 1.15rem; font-weight: 700; text-align: center; margin: 0; }
+.big-time { font-size: 2.2rem; font-weight: 900; color: var(--accent); margin: 0; font-variant-numeric: tabular-nums; }
+.msg { min-height: 26px; font-weight: 700; text-align: center; margin: 0; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; max-width: 430px; }
+.list { display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 360px; }
+
+button { font: inherit; cursor: pointer; }
+button:disabled { cursor: default; }
+
+.opt {
+  border: 2px solid var(--border);
+  background: var(--card);
+  color: var(--card-fg);
+  border-radius: 16px;
+  font-weight: 900;
+  padding: 14px;
+  transition: background 0.15s, color 0.15s, opacity 0.15s;
+}
+.opt:hover:not(:disabled) { background: var(--accent); color: var(--accent-fg); }
+.opt.big-text { font-size: 1.5rem; }
+.opt.ok { background: var(--success); border-color: var(--success); color: #fff; }
+.opt.bad { background: var(--destructive); border-color: var(--destructive); color: #fff; }
+.opt.dim { opacity: 0.45; }
+
+.big {
+  border: none;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  padding: 14px 32px;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+.big:hover { filter: brightness(1.08); }
+
+.clock-big { width: 240px; max-width: 70vw; }
+.clock-mini { width: 120px; }
+.clock-start { width: 160px; }
+
+.face { fill: var(--card); stroke: var(--border); stroke-width: 3; }
+.tick { stroke: rgba(25, 30, 55, 0.4); stroke-width: 1; }
+.tick-b { stroke: rgba(25, 30, 55, 0.4); stroke-width: 2; }
+.num { fill: var(--card-fg); font-weight: 900; font-size: 9px; font-family: inherit; }
+.hour { stroke: var(--card-fg); stroke-width: 5; stroke-linecap: round; }
+.min { stroke: var(--accent); stroke-width: 3; stroke-linecap: round; }
+.pin { fill: var(--accent); }
+
+.end { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; margin-top: 26px; }
+.end-title { font-size: 1.9rem; font-weight: 900; margin: 0; }
+.stars { font-size: 2.6rem; margin: 0; }
+.end-score { font-size: 1.3rem; font-weight: 700; margin: 0; }
+.end-sub { color: var(--muted-fg); margin: 0; }
